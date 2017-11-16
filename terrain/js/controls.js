@@ -16,11 +16,39 @@ var myParams = {
     npts: 10000,// détail de la map (nombre de points)
     ncities: 20,
     nterrs: 10,
+	nMountains: 20,
+	coneX: -1,
+	coneY: -1,
+	slope: 4,
+	erosionX: 0.8,
+	erosionY: 1,
+	erosionZ: 10,
+	setLevelX: 0.2,
+	setLevelY: 0.6,
+	coteEscarpe:3,
     fontsizes: {
         region: 0,
         city: 0,
         town: 0
     }
+}
+
+function updateValue(myParams) {	
+	myParams.npts = d3.select("input#idPoints").value;
+	myParams.ncities = d3.select("input#idVilles").value;
+	myParams.nterrs = d3.select("input#idTerritoires").value;
+	myParams.nMountains = d3.select("input#idPoints").value;
+	myParams.coneX = d3.select("input#idConeX").value;
+	myParams.coneY = d3.select("input#idConeY").value;
+	myParams.slope = d3.select("input#idPente").value;
+	myParams.erosionX = d3.select("input#idErosionA").value;
+	myParams.erosionY = d3.select("input#idErosionB").value;
+	myParams.erosionZ = d3.select("input#idErosionC").value;
+	myParams.setLevelX = d3.select("input#idMerX").value;
+	myParams.setLevelY = d3.select("input#idMerY").value;
+	myParams.coteEscarpe = d3.select("input#idCote").value;
+	
+	
 }
 
 function myGenerateCoast(params) {
@@ -45,14 +73,8 @@ function myGenerateCoast(params) {
 var myMap = d3.select( "div#container" );
 var svg = addSVG( myMap );
 
-myMap.append( "button" )
-  .text( "Generate high resolution map" )
-  .on( "click", function () {
+function generateMap(){
+	updateValue(myParams); 
+	  
     doMap( svg, myParams );
-  });
-
-  myMap.append( "button" )
-  .text( "Number of points" )
-  .on( "click", function () {
-    doMap( svg, myParams );
-  });
+  };
