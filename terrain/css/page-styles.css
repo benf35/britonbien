@@ -1,0 +1,13 @@
+#container {
+  border: 1px solid #000;
+  width: 900px;
+  height: 900px;
+  margin: 0 auto;
+}
+
+button {
+  display: block;
+  height: 2.5rem;
+  width: 12rem;
+  margin: 0 auto;
+}
